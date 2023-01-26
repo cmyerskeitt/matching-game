@@ -15,6 +15,10 @@ let cardArray = [
 //Duplicate cardArray to create a match for each card
 let gameGrid = cardArray.concat(cardArray)
 
+//sort cards randomly within the grid
+
+gameGrid.sort(() => {return .5 - Math.random()})
+
 //Grab the div with an id of game-board and assign to a variable game 
 let game = document.getElementById('game-board')
 
@@ -44,3 +48,4 @@ for (let i = 0; i< gameGrid.length; i++){
     //Append the div to the grid section  
     grid.appendChild(card)
 }
+
