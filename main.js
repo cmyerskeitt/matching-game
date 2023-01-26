@@ -12,6 +12,8 @@ let cardArray = [
     {'name': "Body", "img": "https://images.pexels.com/photos/1903611/pexels-photo-1903611.jpeg?auto=compress&cs=tinysrgb&w=1600", },
     {'name': "Exodus", "img": "https://images.pexels.com/photos/1432238/pexels-photo-1432238.jpeg?auto=compress&cs=tinysrgb&w=1600", },
 ]
+//Duplicate cardArray to create a match for each card
+let gameGrid = cardArray.concat(cardArray)
 
 //Grab the div with an id of game-board and assign to a variable game 
 let game = document.getElementById('game-board')
@@ -26,7 +28,7 @@ grid.setAttribute("class", "grid")
 game.appendChild(grid)
 
 //loop through ach item in our cards array
-for (let i = 0; i< cardArray.length; i++){
+for (let i = 0; i< gameGrid.length; i++){
     // create a div element and assign it to the variable card
     let card = document.createElement('div')
 
@@ -34,11 +36,11 @@ for (let i = 0; i< cardArray.length; i++){
     card.classList.add("card")
 
     //set the data-name attribute of the div to the cardArray name
-    card.dataset.name = cardArray[i].name
+    card.dataset.name = gameGrid[i].name
 
     //Apply the background image of the div to the cardArray image 
-    card.style.backgroundImage = `url(${cardArray[i].img})`
-    
+    card.style.backgroundImage = `url(${gameGrid[i].img})`
+
     //Append the div to the grid section  
     grid.appendChild(card)
 }
