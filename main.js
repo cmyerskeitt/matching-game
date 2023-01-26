@@ -16,7 +16,6 @@ let cardArray = [
 let gameGrid = cardArray.concat(cardArray)
 
 //sort cards randomly within the grid
-
 gameGrid.sort(() => {return .5 - Math.random()})
 
 //Grab the div with an id of game-board and assign to a variable game 
@@ -49,3 +48,11 @@ for (let i = 0; i< gameGrid.length; i++){
     grid.appendChild(card)
 }
 
+//Select the style cards
+grid.addEventListener("click", (event) => {  
+    let clicked = event.target
+    if (clicked.nodeName === 'SECTION'){
+        return
+    }
+    clicked.classList.add("selected")
+})
