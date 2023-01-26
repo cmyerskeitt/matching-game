@@ -48,11 +48,20 @@ for (let i = 0; i< gameGrid.length; i++){
     grid.appendChild(card)
 }
 
+// Set count to 0
+let count = 0 
+
 //Select the style cards
 grid.addEventListener("click", (event) => {  
     let clicked = event.target
+    //do not allow the grid to be selected
     if (clicked.nodeName === 'SECTION'){
         return
     }
-    clicked.classList.add("selected")
+    //only add slected card if the current count it less than 2
+    if (count < 2){
+        count++
+        clicked.classList.add("selected")
+    }
 })
+
