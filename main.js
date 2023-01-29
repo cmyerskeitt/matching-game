@@ -41,11 +41,19 @@ for (let i = 0; i< gameGrid.length; i++){
     //set the data-name attribute of the div to the cardArray name
     card.dataset.name = gameGrid[i].name
 
-    //Apply the background image of the div to the cardArray image 
-    card.style.backgroundImage = `url(${gameGrid[i].img})`
+    //create front of card
+    let front = document.createElement('div')
+    front.classList.add('front')
+    
+    //create back of card 
+    let back = document.createElement('div')
+    back.classList.add('back')
+    back.style.backgroundImage = `url(${gameGrid[i].img})`
 
-    //Append the div to the grid section  
+    //Append the card to the grid section  
     grid.appendChild(card)
+    card.appendChild(front)
+    card.appendChild(back)
 }
 
 // Set count to 0
@@ -92,18 +100,18 @@ grid.addEventListener("click", (event) => {
         count++
         //
         if(count === 1){
-            firstGuess = clicked.dataset.name
-            clicked.classList.add("selected")
+            firstGuess = clicked.parentNode.dataset.name
+            clicked.parentNode.classList.add("selected")
         } else {
-            secondGuess = clicked.dataset.name
-            clicked.classList.add("selected")
+            secondGuess = clicked.parentNode.dataset.name
+            clicked.parentNode.classList.add("selected")
         }
         if( firstGuess !== "" && secondGuess !== ""){
             if(firstGuess === secondGuess){
                 setTimeout(match, delay)
                 setTimeout(resetGuesses, delay)
             } else {
-                resetGuesses();
+                setTimeout(resetGuesses, delay)
             }
         }
         previousTarget = clicked
