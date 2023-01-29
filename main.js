@@ -50,18 +50,47 @@ for (let i = 0; i< gameGrid.length; i++){
 
 // Set count to 0
 let count = 0 
+let previousTarget = null
+
+//Store the first  adn second guess
+let firstGuess = ""
+let secondGuess = ""
+
+//create a function to flag matched cards
+let match = function(){
+    //grab all cliecked cards
+    let selected = document.querySelectorAll(".selected")
+    //loop through cards and add the macth className
+    for (let i = 0; i < selected.length; i++){
+        selected[i].classList.add("match")
+    }
+}
 
 //Select the style cards
 grid.addEventListener("click", (event) => {  
     let clicked = event.target
     //do not allow the grid to be selected
-    if (clicked.nodeName === 'SECTION'){
+    if (clicked.nodeName === 'SECTION'|| clicked === previousTarget || clicked.parentNode.classList.comtains("match") || clicked.parentNode.classList.comtains("selected"){
         return
     }
     //only add slected card if the current count it less than 2
     if (count < 2){
         count++
-        clicked.classList.add("selected")
+        //
+        if(count === 1){
+            firstGuess = clicked.dataset.name
+            clicked.classList.add("selected")
+        } else {
+            secondGuess = clicked.dataset.name
+            clicked.classList.add("selected")
+        }
+        if( firstGuess !== " && secondGuess !== "){
+            if( firstGuess === secondGuess){
+                match()
+            }
+        }
+        previousTarget = clicked
     }
+    
 })
 
