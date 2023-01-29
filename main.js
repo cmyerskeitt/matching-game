@@ -12,6 +12,7 @@ let cardArray = [
     {'name': "Body", "img": "https://images.pexels.com/photos/1903611/pexels-photo-1903611.jpeg?auto=compress&cs=tinysrgb&w=1600", },
     {'name': "Exodus", "img": "https://images.pexels.com/photos/1432238/pexels-photo-1432238.jpeg?auto=compress&cs=tinysrgb&w=1600", },
 ]
+
 //Duplicate cardArray to create a match for each card
 let gameGrid = cardArray.concat(cardArray)
 
