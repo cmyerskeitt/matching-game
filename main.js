@@ -70,7 +70,7 @@ let match = function(){
 grid.addEventListener("click", (event) => {  
     let clicked = event.target
     //do not allow the grid to be selected
-    if (clicked.nodeName === 'SECTION'|| clicked === previousTarget || clicked.parentNode.classList.comtains("match") || clicked.parentNode.classList.comtains("selected"){
+    if (clicked.nodeName === 'SECTION'|| clicked === previousTarget || clicked.parentNode.classList.comtains("match") || clicked.parentNode.classList.comtains("selected")){
         return
     }
     //only add slected card if the current count it less than 2
