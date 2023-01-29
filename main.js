@@ -66,6 +66,19 @@ let match = function(){
     }
 }
 
+///reset guesses after two attempts 
+let resetGuesses = function(){
+    firstGuess = ""
+    secondGuess = ""
+    count = 0 
+    previousTarget = null
+
+    let selected = document.querySelectorAll('.selected')
+    for (i = 0; i < selected.length;i++){
+        selected[i].classList.remove('selected')
+    }
+}
+
 //Select the style cards
 grid.addEventListener("click", (event) => {  
     let clicked = event.target
@@ -84,9 +97,12 @@ grid.addEventListener("click", (event) => {
             secondGuess = clicked.dataset.name
             clicked.classList.add("selected")
         }
-        if( firstGuess !== " && secondGuess !== "){
-            if( firstGuess === secondGuess){
-                match()
+        if( firstGuess !== "" && secondGuess !== ""){
+            if(firstGuess === secondGuess){
+                match();
+                resetGuesses();
+            } else {
+                resetGuesses();
             }
         }
         previousTarget = clicked
