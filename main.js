@@ -51,6 +51,7 @@ for (let i = 0; i< gameGrid.length; i++){
 // Set count to 0
 let count = 0 
 let previousTarget = null
+let delay = 1200;
 
 //Store the first  adn second guess
 let firstGuess = ""
@@ -99,8 +100,8 @@ grid.addEventListener("click", (event) => {
         }
         if( firstGuess !== "" && secondGuess !== ""){
             if(firstGuess === secondGuess){
-                match();
-                resetGuesses();
+                setTimeout(match, delay)
+                setTimeout(resetGuesses, delay)
             } else {
                 resetGuesses();
             }
